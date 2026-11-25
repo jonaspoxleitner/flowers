@@ -1,2 +1,10 @@
+.DS_Store
+
+# Firebase CLI
+.firebase/
+.firebaserc
+firebase.json
+
+# Build output and dependencies
 node_modules/
 dist/

@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "deploy": "npm run build && firebase deploy --only hosting"
   },
   "dependencies": {
     "@glyphcss/core": "^0.3.4",
