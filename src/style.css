@@ -1,0 +1,149 @@
+:root {
+  --stage-backdrop: Canvas;
+  --stage-ink: CanvasText;
+  --font-text: "Berkeley Mono", "SFMono-Regular", "SF Mono", "Menlo", "DejaVu Sans Mono", monospace;
+  --cell-size: clamp(9px, 1vw + 6px, 13px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--stage-backdrop);
+  color: var(--stage-ink);
+  font-family: var(--font-text);
+  font-size: var(--cell-size);
+  line-height: 1;
+  font-variant-ligatures: none;
+  font-kerning: none;
+  text-rendering: optimizeSpeed;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  block-size: 100vh;
+  block-size: 100dvh;
+  overflow: hidden;
+}
+
+#scene-host {
+  display: grid;
+  place-items: center;
+  min-block-size: 0;
+  overflow: hidden;
+}
+
+#scene-host .glyph-scene {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.panels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0 1ch;
+  padding: 0 1ch;
+}
+
+#legend-host,
+#controls-host {
+  flex: none;
+}
+
+.chrome {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  line-height: 1;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.chrome-line {
+  display: block;
+}
+
+.swatch,
+.swatch-input {
+  display: inline-block;
+  block-size: 1em;
+  padding: 0;
+  border: 1px solid currentColor;
+  vertical-align: top;
+}
+
+.swatch-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.swatch-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.swatch-input::-webkit-color-swatch {
+  border: 0;
+  padding: 0;
+}
+
+.swatch-input::-moz-color-swatch {
+  border: 0;
+  padding: 0;
+}
+
+.text-button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.text-button,
+.swatch-input {
+  transition:
+    background-color 80ms linear,
+    color 80ms linear;
+}
+
+.text-button:hover,
+.text-button:focus-visible,
+.swatch-input:focus-visible {
+  background-color: var(--stage-ink);
+  color: var(--stage-backdrop);
+  outline: 1px solid var(--stage-ink);
+  outline-offset: 1px;
+}
+
+.hints {
+  margin: 0;
+  padding: 0.25em 1ch 0.5em;
+  text-align: center;
+  white-space: pre;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-button,
+  .swatch-input {
+    transition: none;
+  }
+}
